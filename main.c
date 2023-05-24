@@ -1,8 +1,9 @@
 #include "shell.h"
 
  /**
-  * main - main function that runs a simple shell
-  * @void: no parameters
+  * main - initialize and executes
+  * @argc: arguments count
+  * @argv: arguments array
   *
   * Return: 0
   */

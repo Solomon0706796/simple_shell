@@ -1,22 +1,6 @@
 #include "shell.h"
 
 /**
- * itprints - prints string to stdout
- * @str: input
- *
- * Return: void
- */
-void itprints(const char *str)
-{
-	if (str == NULL)
-		return;
-	while (*str)
-	{
-		write(STDOUT_FILENO, str, 1);
-		str++;
-	}
-}
-/**
  * _ptrstr - returns pointer to newly allocated space in memory,
  *		which contains a copy of the string given in input
  * @str: input
@@ -49,7 +33,7 @@ char *_ptrstr(const char *str)
 }
 /**
  * rmv_spaces - removes any type of spaces from a string
- * str: string
+ * @str: string
  *
  * Return: void
  */
@@ -90,11 +74,11 @@ void free_args(char **ar)
 	free(ar);
 }
 /**
- * _realloc - reallocates a memory block 
+ * _realloc - reallocates a memory block
  * @ptr: pointer
  * @new_loc: new pointer location
  *
- * Return: newly allocated memory 
+ * Return: newly allocated memory
  */
 void *_realloc(void *ptr, unsigned int new_loc)
 {
@@ -125,17 +109,4 @@ void *_realloc(void *ptr, unsigned int new_loc)
 	}
 	free(ptr);
 	return (po);
-}
-/**
- * it_inits - initializes data
- * @in: data input
- * @shell: string
- *
- * Return: void
- */
-void it_inits(data *in, const char shell)
-{
-	in->ar = NULL;
-	in->cmd = NULL;
-	in->shell = shell;
 }
