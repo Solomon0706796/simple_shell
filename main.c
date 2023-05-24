@@ -1,13 +1,12 @@
 #include "shell.h"
 
- /**
-  * main - initialize and executes
-  * @argc: arguments count
-  * @argv: arguments array
-  *
-  * Return: 0
-  */
-
+/**
+ * main - main function
+ * @argc: arguments count
+ * @argv: arguments array
+ *
+ * Return: 0
+ */
 int main(int argc, char **argv)
 {
 	data in;
