@@ -15,14 +15,23 @@
 #define BUF_SIZE 1024
 
 extern char **environ;
-
+/**
+ * struct data - data
+ * @shell: shell name
+ * @cmd: command
+ * @ar: array
+ */
 typedef struct data
 {
 	const char *shell;
 	char *cmd;
 	char **ar;
 } data;
-
+/**
+ * struct bltin - bultin
+ * @cmd: command
+ * @func: function
+ */
 typedef struct bltin
 {
 	const char *cmd;

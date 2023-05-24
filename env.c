@@ -14,11 +14,11 @@ char *env_var(char *str)
 
 	if (str == NULL || *str == '\0')
 	{
-		return NULL;
+		return (NULL);
 	}
 	if (environ == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 	len = _strlen(str);
 	while (environ[++x])
@@ -38,23 +38,20 @@ char *env_var(char *str)
  */
 int loc_exec(data *in)
 {
-	char *tok, *path, *p;
+	char *path, *tok = strtok(p, ":");
+	char *p = malloc(_strlen(env_var("PATH") ? env_var("PATH") : "") + 1);
 	int found = -1;
 	size_t toklen;
 
-	p = malloc(_strlen(env_var("PATH") ? env_var("PATH") : "") + 1);
 	if (p == NULL)
-	{
 		free(p);
 		return (found);
-	}
+
 	_cpystr(p, env_var("PATH"));
 	if (p == NULL)
-	{
 		free(p);
 		return (found);
-	}
-	tok = strtok(p, ":");
+
 	while (tok)
 	{
 		toklen = _strlen(tok) + _strlen(in->ar[0]) + 2;

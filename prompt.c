@@ -2,7 +2,7 @@
 
 /**
  * print_prompt - prints the prompt
- * @prmt: prompt
+ * @signal: prompt
  *
  * Return: void
  */
