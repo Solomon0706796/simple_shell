@@ -33,7 +33,7 @@ void split_cmd(data *in, const char *delim)
 			exit(EXIT_FAILURE);
 		}
 		in->ar[ntoks] = _ptrstr(tok);
-		if (in->[ntoks] == NULL)
+		if (in->ar[ntoks] == NULL)
 		{
 			perror(in->shell);
 			free_args(in->ar);

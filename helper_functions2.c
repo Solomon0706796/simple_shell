@@ -10,7 +10,7 @@
 char *_ptrstr(const char *str)
 {
 	int x, len = 0;
-	char r;
+	char *r;
 
 	if (str == NULL)
 	{

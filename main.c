@@ -10,8 +10,8 @@
 
 int main(int argc, char **argv)
 {
-	(void)argc;
 	data in;
+	(void)argc;
 
 	it_inits(&in, argv[0]);
 	exec_cmds(&in);

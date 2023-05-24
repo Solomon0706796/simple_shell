@@ -43,7 +43,7 @@ void exec_cmds(data *in)
 {
 	const char prompt[] = "\n¤ ";
 
-	prmt(SIGINT, print_prompt);
+	signal(SIGINT, print_prompt);
 
 	while (1)
 	{

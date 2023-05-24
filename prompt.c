@@ -7,9 +7,9 @@
  * Return: void
  */
 
-void print_prompt(int prmt)
+void print_prompt(int signal)
 {
 	const char prompt[] = "\n¤ ";
-	(void)prmt;
+	(void)signal;
 	itprints(prompt);
 }
