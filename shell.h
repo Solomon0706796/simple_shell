@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 int calculate_area_rect(int length, int breath)
-#endif	
+	
 =======
 #ifndef _SHELL_H_
 #define _SHELL_H_
@@ -51,4 +51,3 @@ size_t _strlen(const char *s);
 /* copies a string */
 char *_cpystr(char *dest, const char *src);
 #endif
->>>>>>> d320eb016492e5b83d1bc82ad32a2393f85cddff
