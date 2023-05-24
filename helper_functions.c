@@ -99,7 +99,7 @@ int _cmpstrn(const char *str1, const char *str2, int i)
 	{
 		if (x >= i)
 			break;
-		if (str[x] != str2[x])
+		if (str1[x] != str2[x])
 		{
 			r = str1[x] - str2[x];
 			break;

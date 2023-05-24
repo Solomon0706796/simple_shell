@@ -23,7 +23,7 @@ void itprints(const char *str)
  *
  * Return: void
  */
-void it_inits(data *in, const char shell)
+void it_inits(data *in, const char *shell)
 {
 	in->ar = NULL;
 	in->cmd = NULL;

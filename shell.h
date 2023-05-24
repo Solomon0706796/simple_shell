@@ -15,23 +15,7 @@
 #define BUF_SIZE 1024
 
 extern char **environ;
-/**
- * struct cmdbltin - holds the main data
- * @cmd: built in commands
- * @func: function
- */
-typedef struct cmdbltin
-{
-	const char *cmd;
-	void (*func)(data *in);
-} bltin;
 
-/**
- * struct ds - holds data
- * @ar: array
- * @cmd: command
- * @shell: the shell name
- */
 typedef struct data
 {
 	const char *shell;
@@ -39,10 +23,16 @@ typedef struct data
 	char **ar;
 } data;
 
+typedef struct bltin
+{
+	const char *cmd;
+	void (*func)(data *in);
+} bltin;
+
 /* main function */
 int main(int argc, char **argv);
 /* prints prompt */
-void print_prompt(int prmt);
+void print_prompt(int signal);
 /* reads command line */
 void read_cmds(data *in);
 /* starts a new process */
@@ -50,7 +40,7 @@ void itstarts(data *in);
 /* executes command */
 void exec_cmds(data *in);
 /* executes built-in commands */
-void builtin_cmds(data *in);
+int builtin_cmds(data *in);
 /* exits the shell */
 void bltin_exit(data *in);
 /* prints the current environment */
@@ -79,14 +69,17 @@ int _cmpstrn(const char *str1, const char *str2, int i);
 
 /* reallocates a memory block */
 void *_realloc(void *ptr, unsigned int new_loc);
-/* printf implementation */
-void itprints(const char *str);
 /* returns pointer to newly allocated space in memory */
 char *_ptrstr(const char *str);
 /* frees memory allocated for arguments */
 void free_args(char **ar);
 /* removes trailing spaces */
 void rmv_spaces(char *str);
+
+/* it does */
+
+/* printf implementation */
+void itprints(const char *str);
 /* initializes data */
 void it_inits(data *in, const char *shell);
 

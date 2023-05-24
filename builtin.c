@@ -10,7 +10,7 @@ int builtin_cmds(data *in)
 {
 	int x = 0;
 
-	cmdbltin bltin[] = {
+	bltin bltin[] = {
 		{"exit", bltin_exit},
 		{"env", bltin_env},
 		{NULL, NULL}
@@ -18,7 +18,7 @@ int builtin_cmds(data *in)
 
 	for (x = 0; bltin[x].cmd; x++)
 	{
-		if (_cmprstr(in->ar[0], bltin.cmd) == 0)
+		if (_cmprstr(in->ar[0], bltin[x].cmd) == 0)
 		{
 			bltin[x].func(in);
 			return (1);
