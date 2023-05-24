@@ -12,16 +12,12 @@ int loc_exec(data *in)
 	size_t toklen;
 
 	if (p == NULL)
-	{
-		free(p);
 		return (found);
-	}
+
 	_cpystr(p, env_var("PATH"));
 	if (p == NULL)
-	{
-		free(p);
 		return (found);
-	}
+
 	tok = strtok(p, ":");
 	while (tok)
 	{
@@ -29,7 +25,6 @@ int loc_exec(data *in)
 		path = malloc(toklen);
 		if (path == NULL)
 		{
-			free(p);
 			return (found);
 		}
 		_cpystr(path, tok);
