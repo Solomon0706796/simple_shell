@@ -2,14 +2,14 @@
 
 /**
  * print_prompt - prints the prompt
- * @void: void
+ * @prmt: prompt
  *
- * Return: 0
+ * Return: void
  */
 
-void print_prompt(void)
+void print_prompt(int prmt)
 {
-	char prompt[] = "¤ ";
-
-	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+	const char prompt[] = "\n¤ ";
+	(void)prmt;
+	itprints(prompt);
 }
