@@ -1,29 +1,22 @@
 #include "shell.h"
 
 /**
- * read_cmd - reads the command line entered by the user
- * @void: void
+ * read_cmds - reads the command line entered by the user
+ * @in: data input
  *
- * Return: command if succeeded, error if failed
+ * Return: void
  */
-
-char *read_cmd(void)
+void read_cmds(data *in)
 {
-	char *cmd = NULL;
-	size_t bufsize = 0;
+	ssize_t nreads;
+	size_t n = 0;
 
-	cmd = (char *) malloc(BUF * sizeof(char));
-
-	if (cmd == NULL)
+	nreads = getline(&in->cmd, &n, stdin);
+	if (nreads == -1)
 	{
-		perror("Error allocating memory\n");
+		free(in->cmd);
 		exit(EXIT_FAILURE);
 	}
-	if (getline(&cmd, &bufsize, stdin) == -1)
-	{
-		write(STDOUT_FILENO, "\nExiting shell ... \n", 18);
-		free(cmd);
-		exit(EXIT_SUCCESS);
-	}
-	return (cmd);
+	in->cmd[nreads - 1] = '\0';
+	rmv_spaces(in->cmd);
 }
