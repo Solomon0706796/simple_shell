@@ -42,7 +42,7 @@ char *_cpystr(char *dest, const char *src)
  *
  * Return: void
  */
-char *_catstr(char dest*, const char *src)
+char *_catstr(char *dest, const char *src)
 {
 	while (*dest != '\0')
 	{

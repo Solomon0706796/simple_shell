@@ -56,7 +56,7 @@ void bltin_env(data *in)
 
 	(void)in;
 
-	while(environ[x])
+	while (environ[x])
 	{
 		itprints(environ[x]);
 		itprints("\n");

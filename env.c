@@ -32,7 +32,7 @@ char env_var(char *str)
 }
 /**
  * loc_exec - locates an executable file associated with a given command.
- * @ds: data input
+ * @in: data input
  *
  * Return: void
  */
@@ -66,7 +66,7 @@ int loc_exec(data *in)
 		}
 		_cpystr(path, tok);
 		_catstr(path, "/");
-		_catstr(path,in->ar[0]);
+		_catstr(path, in->ar[0]);
 
 		if (access(path, F_OK) == 0)
 		{
