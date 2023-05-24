@@ -1,35 +1,19 @@
 #include "shell.h"
 
- /**
-  * main - main function that runs a simple shell
-  * @void: no parameters
-  *
-  * Return: 0
-  */
-
-int main(void)
+/**
+ * main - main function
+ * @argc: arguments count
+ * @argv: arguments array
+ *
+ * Return: 0
+ */
+int main(int argc, char **argv)
 {
-	char *prompt = "¤ ";
-	char *cmd, **args;
-	size_t len;
-	int x;
+	data in;
+	(void)argc;
 
-	env_var("ES_VAR=Hello ALX");
+	it_inits(&in, argv[0]);
+	exec_cmds(&in);
 
-	while (1)
-	{
-		write(STDOUT_FILENO, prompt, _strlen(prompt));
-		cmd = read_cmd();
-		len = _strlen(cmd);
-		write(STDOUT_FILENO, cmd, len);
-		write(STDOUT_FILENO, "\n", 1);
-		args = split_cmd(cmd);
-		exec_cmd(args[0]);
-		free(cmd);
-
-		for (x = 0; args[x] != NULL; x++)
-			free(args[x]);
-		free(args);
-	}
 	return (0);
 }

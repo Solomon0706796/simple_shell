@@ -1,50 +1,47 @@
 #include "shell.h"
 
 /**
- * split_cmd - split commands into arguments
- * @cmd: command
+ * split_cmd - splits commands using a delimiter
+ * @in: data input
+ * @delim: delimiter
  *
- * Return: arguments
+ * Return: void
  */
-
-char **split_cmd(char *cmd)
+void split_cmd(data *in, const char *delim)
 {
-	int x, ntoks = 0;
-	char *tok, *cpy_cmd, **args = NULL;
+	int ntoks = 0;
+	char *tok;
 
-	cpy_cmd = malloc((_strlen(cmd)) + 1 * sizeof(char));
-
-	if (cpy_cmd == NULL)
+	in->ar = malloc(2 * sizeof(char *));
+	if (in->ar == NULL)
 	{
-		perror("Error allocating memory");
+		free(in->cmd);
+		perror(in->shell);
 		exit(EXIT_FAILURE);
 	}
-	_cpystr(cpy_cmd, cmd);
+	in->ar[0] = NULL;
+	in->ar[1] = NULL;
 
-	tok = strtok(cpy_cmd, " \t\n");
-
-	while (tok != NULL)
+	tok = strtok(in->cmd, delim);
+	while (tok)
 	{
+		in->ar = _realloc(in->ar, (ntoks + 2) * sizeof(char *));
+		if (in->ar == NULL)
+		{
+			perror(in->shell);
+			free(in->cmd);
+			exit(EXIT_FAILURE);
+		}
+		in->ar[ntoks] = _ptrstr(tok);
+		if (in->ar[ntoks] == NULL)
+		{
+			perror(in->shell);
+			free_args(in->ar);
+			free(in->cmd);
+			exit(EXIT_FAILURE);
+		}
 		ntoks++;
-		tok = strtok(NULL, " \t\n");
+		tok = strtok(NULL, delim);
 	}
-
-	args = malloc(sizeof(char *) * (ntoks + 1));
-
-	if (args == NULL)
-	{
-		perror("Error allocating memory");
-		exit(EXIT_FAILURE);
-	}
-	tok = strtok(cmd, " \t\n");
-
-	for (x = 0; x < ntoks; x++)
-	{
-		args[x] = tok;
-		tok = strtok(NULL, " \t\n");
-	}
-	args[ntoks] = NULL;
-
-	free(cpy_cmd);
-	return (args);
+	in->ar[ntoks] = NULL;
 }
