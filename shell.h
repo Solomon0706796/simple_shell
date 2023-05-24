@@ -28,7 +28,7 @@ typedef struct data
 	char **ar;
 } data;
 /**
- * struct bltin - bultin
+ * struct bltin - builtin
  * @cmd: command
  * @func: function
  */

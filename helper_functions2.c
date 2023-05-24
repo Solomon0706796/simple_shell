@@ -29,6 +29,7 @@ char *_ptrstr(const char *str)
 	{
 		r[x] = str[x];
 	}
+	free(r);
 	return (r);
 }
 /**
