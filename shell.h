@@ -24,6 +24,7 @@ extern char **environ;
 typedef struct data
 {
 	const char *shell;
+	char **env;
 	char *cmd;
 	char **ar;
 } data;
@@ -39,7 +40,7 @@ typedef struct bltin
 } bltin;
 
 /* main function */
-int main(int argc, char **argv);
+int main(int argc, char **argv, char **env);
 /* prints prompt */
 void print_prompt(int signal);
 /* reads command line */
@@ -97,7 +98,7 @@ int _getline_help(char **str_in, size_t *i);
 /* printf implementation */
 void itprints(const char *str);
 /* initializes data */
-void it_inits(data *in, const char *shell);
+void it_inits(data *in, const char *shell, char **env);
 
 
 #endif
