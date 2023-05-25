@@ -20,12 +20,14 @@ void itprints(const char *str)
  * it_inits - initializes data
  * @in: data input
  * @shell: string
+ * @env: environment
  *
  * Return: void
  */
-void it_inits(data *in, const char *shell)
+void it_inits(data *in, const char *shell, char **env)
 {
 	in->ar = NULL;
 	in->cmd = NULL;
 	in->shell = shell;
+	in->env = env;
 }

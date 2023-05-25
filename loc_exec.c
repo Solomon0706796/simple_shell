@@ -11,41 +11,34 @@ int loc_exec(data *in)
 	int found = -1;
 	size_t toklen;
 
-	if (p == NULL)
+	if (env_var("PATH"))
 	{
-		free(p);
-		return (found);
-	}
-	_cpystr(p, env_var("PATH"));
-	if (p == NULL)
-	{
-		free(p);
-		return (found);
-	}
-	tok = strtok(p, ":");
-	while (tok)
-	{
-		toklen = _strlen(tok) + _strlen(in->ar[0]) + 2;
-		path = malloc(toklen);
-		if (path == NULL)
+		_cpystr(p, env_var("PATH"));
+		if (p != NULL)
 		{
-			free(p);
-			return (found);
+			tok = strtok(p, ":");
+			while (tok)
+			{
+				toklen = _strlen(tok) + _strlen(in->ar[0]) + 2;
+				path = malloc(toklen);
+				if (path != NULL)
+				{
+					_cpystr(path, tok);
+					_catstr(path, "/");
+					_catstr(path, in->ar[0]);
+					if (access(path, F_OK) == 0)
+					{
+						free(in->ar[0]);
+						in->ar[0] = _ptrstr(path);
+						free(path);
+						found = 0;
+						break;
+					}
+					free(path);
+				}
+				tok = strtok(NULL, ":");
+			}
 		}
-		_cpystr(path, tok);
-		_catstr(path, "/");
-		_catstr(path, in->ar[0]);
-
-		if (access(path, F_OK) == 0)
-		{
-			free(in->ar[0]);
-			in->ar[0] = _ptrstr(path);
-			free(path);
-			found = 0;
-			break;
-		}
-		free(path);
-		tok = strtok(NULL, ":");
 	}
 	free(p);
 	return (found);
