@@ -110,3 +110,23 @@ void *_realloc(void *ptr, unsigned int old_loc, unsigned int new_loc)
 	free(ptr);
 	return (po);
 }
+/**
+ * _getline_help - helper function for the implemented getline
+ * @str_in: string
+ * @i: integer
+ *
+ * Return: 0 on success, -1 if failed
+ */
+int _getline_help(char **str_in, size_t *i)
+{
+	if (*str_in == NULL || *i == 0)
+	{
+		*i = 128;
+		*str_in = malloc(*i);
+		if (*str_in == NULL)
+		{
+			return (-1);
+		}
+	}
+	return (0);
+}
