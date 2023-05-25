@@ -15,7 +15,7 @@ void read_cmds(data *in)
 	if (nreads == -1)
 	{
 		free(in->cmd);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	in->cmd[nreads - 1] = '\0';
 	rmv_spaces(in->cmd);

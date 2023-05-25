@@ -29,6 +29,7 @@ char *_ptrstr(const char *str)
 	{
 		r[x] = str[x];
 	}
+	free(r);
 	return (r);
 }
 /**
@@ -70,7 +71,6 @@ void free_args(char **ar)
 	for (x = 0; ar[x]; x++)
 	{
 		free(ar[x]);
-		ar[x] = NULL;
 	}
 	free(ar);
 }
@@ -81,8 +81,9 @@ void free_args(char **ar)
  *
  * Return: newly allocated memory
  */
-void *_realloc(void *ptr, unsigned int old_loc, unsigned int new_loc)
+void *_realloc(void *ptr, unsigned int new_loc)
 {
+	unsigned int old_loc = sizeof(ptr);
 	unsigned int x, nptr = new_loc;
 	char *po = malloc(new_loc);
 

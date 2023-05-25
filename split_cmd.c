@@ -15,8 +15,8 @@ void split_cmd(data *in, const char *delim)
 	in->ar = malloc(2 * sizeof(char *));
 	if (in->ar == NULL)
 	{
-		perror(in->shell);
 		free(in->cmd);
+		perror(in->shell);
 		exit(EXIT_FAILURE);
 	}
 	in->ar[0] = NULL;
@@ -25,7 +25,7 @@ void split_cmd(data *in, const char *delim)
 	tok = strtok(in->cmd, delim);
 	while (tok)
 	{
-		in->ar = _realloc(in->ar, ntoks * sizeof(char *), (ntoks + 2) * sizeof(char *));
+		in->ar = _realloc(in->ar, (ntoks + 2) * sizeof(char *));
 		if (in->ar == NULL)
 		{
 			perror(in->shell);
