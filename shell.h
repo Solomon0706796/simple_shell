@@ -48,18 +48,23 @@ void read_cmds(data *in);
 void itstarts(data *in);
 /* executes command */
 void exec_cmds(data *in);
-/* executes built-in commands */
-int builtin_cmds(data *in);
-/* exits the shell */
-void bltin_exit(data *in);
-/* prints the current environment */
-void bltin_env(data *in);
 /* splits a command line using a delimiter */
 void split_cmd(data *in, const char *delim);
 /* adds new environmental variable */
 char *env_var(char *str);
 /* locates files*/
 int loc_exec(data *in);
+/* reads the input from FILE */
+ssize_t _getline(char **str_in, size_t *i, FILE *stream);
+
+/* builtin */
+
+/* executes built-in commands */
+int builtin_cmds(data *in);
+/* exits the shell */
+void bltin_exit(data *in);
+/* prints the current environment */
+void bltin_env(data *in);
 
 /* helper functions */
 
@@ -84,6 +89,8 @@ char *_ptrstr(const char *str);
 void free_args(char **ar);
 /* removes trailing spaces */
 void rmv_spaces(char *str);
+/* getline helper */
+int _getline_help(char **str_in, size_t *i);
 
 /* it does */
 

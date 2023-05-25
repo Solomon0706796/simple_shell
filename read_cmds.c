@@ -11,7 +11,7 @@ void read_cmds(data *in)
 	ssize_t nreads;
 	size_t n = 0;
 
-	nreads = getline(&in->cmd, &n, stdin);
+	nreads = _getline(&in->cmd, &n, stdin);
 	if (nreads == -1)
 	{
 		free(in->cmd);
