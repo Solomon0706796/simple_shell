@@ -16,21 +16,21 @@ void itstarts(data *in)
 		perror("Error forking process");
 		free_args(in->ar);
 		free(in->cmd);
-		_exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	if (cpid == 0 && execve(in->ar[0], in->ar, NULL) == -1)
 	{
 		perror("Error executing command");
 		free_args(in->ar);
 		free(in->cmd);
-		_exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	else if (wait(&stats) == -1)
 	{
 		perror("Error waiting for child process");
 		free_args(in->ar);
 		free(in->cmd);
-		_exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 }
 /**

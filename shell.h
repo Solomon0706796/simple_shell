@@ -77,7 +77,7 @@ int _cmpstrn(const char *str1, const char *str2, int i);
 /* helper functions 2 */
 
 /* reallocates a memory block */
-void *_realloc(void *ptr, unsigned int new_loc);
+void *_realloc(void *ptr, unsigned int old_loc, unsigned int new_loc);
 /* returns pointer to newly allocated space in memory */
 char *_ptrstr(const char *str);
 /* frees memory allocated for arguments */
