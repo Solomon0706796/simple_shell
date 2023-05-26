@@ -38,7 +38,7 @@ void bltin_exit(data *in)
 
 	if (in->ar[1])
 	{
-		stats = atoi(in->ar[1]);
+		status = atoi(in->ar[1]);
 	}
 	free_args(in->ar);
 	free(in->cmd);
