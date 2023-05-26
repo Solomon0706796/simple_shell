@@ -7,13 +7,13 @@
 int loc_exec(data *in)
 {
 	char *path, *tok;
-	char *p = malloc(_strlen(env_var("PATH") ? env_var("PATH") : "") + 1);
+	char *p = malloc(_strlen(env("PATH") ? env("PATH") : "") + 1);
 	int found = -1;
 	size_t toklen;
 
-	if (env_var("PATH"))
+	if (env("PATH"))
 	{
-		_cpystr(p, env_var("PATH"));
+		_cpystr(p, env("PATH"));
 		if (p != NULL)
 		{
 			tok = strtok(p, ":");
