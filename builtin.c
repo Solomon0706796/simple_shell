@@ -34,7 +34,7 @@ int builtin_cmds(data *in)
  */
 void bltin_exit(data *in)
 {
-	int stats = 0;
+	int status = 0;
 
 	if (in->ar[1])
 	{
@@ -42,7 +42,7 @@ void bltin_exit(data *in)
 	}
 	free_args(in->ar);
 	free(in->cmd);
-	exit(stats);
+	exit(status);
 }
 /**
  * bltin_env - prints the current environment
