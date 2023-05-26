@@ -52,7 +52,7 @@ void exec_cmds(data *in);
 /* splits a command line using a delimiter */
 void split_cmd(data *in, const char *delim);
 /* adds new environmental variable */
-char *env_var(char *str);
+char *env(char *str);
 /* locates files*/
 int loc_exec(data *in);
 /* reads the input from FILE */
