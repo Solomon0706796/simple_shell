@@ -7,7 +7,7 @@
  * Return: value of an environment variable
  */
 
-char *env_var(char *str)
+char *env(char *str)
 {
 	size_t len;
 	int x = -1;
